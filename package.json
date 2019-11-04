@@ -9,7 +9,6 @@
     "babel-jest": "^24.9.0",
     "cross-env": "^6.0.3",
     "eslint": "^6.6.0",
-    "husky": "^3.0.9",
     "jest-enzyme": "^7.1.2",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
@@ -61,7 +60,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "cross-env CI=true lint-staged"
+      "pre-commit": "cross-env CI=true lint-staged"
     }
   },
   "lint-staged": {
@@ -88,6 +87,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
+    "husky": "^3.0.9",
     "jest": "^24.9.0"
   }
 }
