@@ -27,6 +27,7 @@
     "eject": "react-scripts eject",
     "test:coverage": "react-scripts test --coverage",
     "lint": "eslint src",
+    "test:staged": "cross-env CI=true react-scripts test --env=jsdom --findRelatedTests",
     "ci": "npm lint && cross-env CI=true npm test --coverage"
   },
   "eslintConfig": {
@@ -37,7 +38,7 @@
   ],
   "jest": {
     "collectCoverageFrom": [
-      "**/*.{js,jsx}",
+      "**/*\\.{js,jsx}",
       "!**/node_modules/**",
       "!**/coverage/**",
       "!**/serviceWorker.js",
@@ -53,7 +54,6 @@
     }
   },
   "prettier": {
-    "trailingComma": "all",
     "tabWidth": 2,
     "semi": true,
     "singleQuote": true
@@ -67,7 +67,7 @@
     "src/**/*.{js,jsx}": [
       "prettier --write",
       "eslint --max-warnings=0",
-      "npm test --bail --findRelatedTests",
+      "test:staged",
       "git add"
     ]
   },
