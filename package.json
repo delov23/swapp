@@ -3,18 +3,73 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.7",
+    "babel-jest": "^24.9.0",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.6.0",
+    "husky": "^3.0.9",
+    "jest-enzyme": "^7.1.2",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2",
+    "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.2.0",
+    "react-svg-radar-chart": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:coverage": "react-scripts test --coverage",
+    "lint": "eslint src",
+    "ci": "npm lint && cross-env CI=true npm test --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "setupFiles": [
+    "./src/setupTests.js"
+  ],
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{jsx}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/serviceWorker.js",
+      "!**/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "cross-env CI=true lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier --write",
+      "eslint --max-warnings=0",
+      "npm test --bail --findRelatedTests",
+      "git add"
+    ]
   },
   "browserslist": {
     "production": [
@@ -27,5 +82,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
+    "jest": "^24.9.0"
   }
 }
