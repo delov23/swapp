@@ -1,0 +1,17 @@
+@import "./css/colors.module.css";
+
+.appWrapper {
+  min-height: 100vh;
+}
+
+.appWrapperLight {
+  composes: appWrapper;
+  background-color: #e8eaed;
+  color: #4e5b6e;
+}
+
+.appWrapperDark {
+  composes: appWrapper;
+  background-color: #000;
+  color: #abb1ba;
+}
