@@ -1,0 +1,5 @@
+{
+  "cSpell.words": ["themify", "Starwars"],
+  "css.lint.validProperties": ["composes"],
+  "css.lint.unknownAtRules": "ignore"
+}
