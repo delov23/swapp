@@ -1,0 +1,74 @@
+@import "../../css/colors.module.css";
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.navigationLight {
+  composes: navigation;
+  background-color: mainBlack;
+}
+
+.navigationDark {
+  composes: navigation;
+  background-color: #333;
+}
+
+.siteLogo {
+  font-family: Starwars;
+  font-weight: 200;
+  font-size: 2rem;
+  color: mainYellow;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.linkContainer {
+  margin-left: 0.5rem;
+}
+
+.link {
+  color: mainCyan;
+}
+
+.logout {
+  color: mainCyan;
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+  border-width: 1.5px;
+  border-style: solid;
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  -o-border-radius: 0.2rem;
+}
+
+.logoutLight {
+  composes: logout;
+  background: #eff2f7;
+  border-color: lightBorder;
+}
+
+.logoutDark {
+  composes: logout;
+  background: #333;
+  border-color: #3c4858;
+}
+
+@media screen and (max-width: 400px) {
+  .siteLogo {
+    font-size: 1.5rem;
+  }
+}
