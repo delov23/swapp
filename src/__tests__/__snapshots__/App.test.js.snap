@@ -11,7 +11,7 @@ exports[`renders without crashing 1`] = `
     Two
   </h2>
   <h3>
-    Three 23
+    Three 223
   </h3>
 </div>
 `;
