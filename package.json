@@ -27,6 +27,7 @@
     "eject": "react-scripts eject",
     "test:coverage": "react-scripts test --coverage",
     "lint": "eslint src",
+    "test:staged": "cross-env CI=true react-scripts test --env=jsdom --findRelatedTests",
     "ci": "npm lint && cross-env CI=true npm test --coverage"
   },
   "eslintConfig": {
@@ -60,14 +61,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "cross-env CI=true lint-staged"
+      "pre-push": "cross-env CI=true lint-staged"
     }
   },
   "lint-staged": {
-    "src/**/*.js": [
+    "src/**/*.{jsx,js}": [
       "prettier --write",
       "eslint --max-warnings=0",
-      "npm test --bail --findRelatedTests",
+      "npm run test:staged",
       "git add"
     ]
   },
