@@ -1,4 +1,4 @@
-@import "../../css/colors.module.css";
+@import "../../css/colors.css";
 
 .navigation {
   display: flex;
@@ -8,7 +8,7 @@
 
 .navigationLight {
   composes: navigation;
-  background-color: mainBlack;
+  background-color: var(--mainBlack);
 }
 
 .navigationDark {
@@ -20,7 +20,7 @@
   font-family: Starwars;
   font-weight: 200;
   font-size: 2rem;
-  color: mainYellow;
+  color: var(--mainYellow);
   cursor: pointer;
   background: none;
   border: none;
@@ -40,11 +40,11 @@
 }
 
 .link {
-  color: mainCyan;
+  color: var(--mainCyan);
 }
 
 .logout {
-  color: mainCyan;
+  color: var(--mainCyan);
   padding: 0.4rem;
   border-radius: 0.2rem;
   border-width: 1.5px;
@@ -58,7 +58,7 @@
 .logoutLight {
   composes: logout;
   background: #eff2f7;
-  border-color: lightBorder;
+  border-color: var(--lightBorder);
 }
 
 .logoutDark {
