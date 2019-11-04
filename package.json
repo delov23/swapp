@@ -38,7 +38,7 @@
   ],
   "jest": {
     "collectCoverageFrom": [
-      "**/*\\.{js,jsx}",
+      "**/*.{jsx}",
       "!**/node_modules/**",
       "!**/coverage/**",
       "!**/serviceWorker.js",
@@ -54,6 +54,7 @@
     }
   },
   "prettier": {
+    "trailingComma": "all",
     "tabWidth": 2,
     "semi": true,
     "singleQuote": true
@@ -64,10 +65,10 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
+    "src/**/*.{jsx,js}": [
       "prettier --write",
       "eslint --max-warnings=0",
-      "test:staged",
+      "npm run test:staged",
       "git add"
     ]
   },
