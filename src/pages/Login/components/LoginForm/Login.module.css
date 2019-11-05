@@ -1,0 +1,125 @@
+@import "../../../../css/colors.css";
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.formWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  min-height: calc(100vh - 5rem);
+  margin: auto;
+}
+
+.formHeading {
+  font-family: Starwars;
+  font-weight: 200;
+  font-size: 5rem;
+  margin: 0;
+  color: var(--mainYellow);
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--mainBlack);
+  padding: 1rem;
+}
+
+.loginForm {
+  width: 50vw;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginFormLight {
+  composes: loginForm;
+  background-color: var(--mainWhite);
+}
+
+.loginFormDark {
+  composes: loginForm;
+  background-color: var(--dark);
+}
+
+.inputField {
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  margin: 10px;
+  border: 1px solid var(--lightBorder);
+  -webkit-border-radius: 0.2rem;
+  -moz-border-radius: 0.2rem;
+  -ms-border-radius: 0.2rem;
+  -o-border-radius: 0.2rem;
+}
+
+.inputFieldLight {
+  composes: inputField;
+  background: #eff2f7;
+  border-color: var(--lightBorder);
+  color: #3c4858;
+}
+
+.inputFieldDark {
+  composes: inputField;
+  background: #fff;
+  border-color: #3c4858;
+  color: #3c4858;
+}
+
+.submitBtn {
+  min-width: 20%;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  margin: 10px;
+  color: var(--mainYellow);
+  font-family: 'Arial Black';
+  align-self: flex-end;
+  font-size: 1rem;
+  border: none;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+}
+
+.submitBtnLight {
+  composes: submitBtn;
+  background-color: var(--mainBlack);
+}
+
+.submitBtnDark {
+  composes: submitBtn;
+  background-color: var(--mainCyan);
+}
+
+.textError {
+  margin: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: tomato;
+}
+
+@media screen and (max-width: 400px) {
+  .formHeading {
+    font-size: 3rem;
+  }
+
+  .submitBtn {
+    min-width: 40%;
+  }
+
+  .inputField {
+    margin: 5px;
+  }
+}

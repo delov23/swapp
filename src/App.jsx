@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch, Redirect } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/react-hooks';
 
+import client from './client';
 import ThemeContext, { LIGHT_THEME, DARK_THEME } from './context/ThemeContext';
 import { themify } from './utils/themify';
-import Navigation from './components/Navigation/Navigation';
 import styles from './App.module.css';
+
+import Navigation from './components/Navigation/Navigation';
+import { Login } from './pages/Login/';
+import { AnonymousRoute } from './components/AnonymousRoute';
+import { AuthRoute } from './components/AuthRoute';
 
 const App = () => {
   const [theme, setTheme] = useState(
@@ -18,14 +24,27 @@ const App = () => {
   };
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <div className={styles[themify('appWrapper', theme)]}>
-        <BrowserRouter>
-          <Navigation toggleTheme={toggleTheme} />
-          <Switch></Switch>
-        </BrowserRouter>
-      </div>
-    </ThemeContext.Provider>
+    <ApolloProvider client={client}>
+      <ThemeContext.Provider value={theme}>
+        <div className={styles[themify('appWrapper', theme)]}>
+          <BrowserRouter>
+            <Navigation toggleTheme={toggleTheme} />
+            <Switch>
+              <AuthRoute path="/" exact render={() => <div>Home</div>} />
+              <AnonymousRoute path="/login" component={Login} />
+              <AuthRoute
+                path="/logout"
+                render={() => {
+                  localStorage.removeItem('token');
+                  client.writeData({ data: { authenticated: false } });
+                  return <Redirect to="/login" />;
+                }}
+              />
+            </Switch>
+          </BrowserRouter>
+        </div>
+      </ThemeContext.Provider>
+    </ApolloProvider>
   );
 };
 
