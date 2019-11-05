@@ -1,0 +1,48 @@
+.wrapper {
+  min-height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  font-family: Starwars;
+  text-align: center;
+  font-size: 10vh;
+  animation: loading 1.5s infinite;
+  -webkit-animation: loading 1.5s infinite;
+}
+
+.loaderLight {
+  composes: loader;
+  color: var(--mainYellow);
+}
+
+.loaderDark {
+  composes: loader;
+  color: var(--mainCyan);
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+    -webkit-transform: scale(1.4);
+    -moz-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -o-transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+  }
+}
