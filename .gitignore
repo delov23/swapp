@@ -11,6 +11,7 @@
 # production
 /build
 /.env
+/.graphqlconfig.yml
 
 # misc
 .DS_Store

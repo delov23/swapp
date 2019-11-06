@@ -9,7 +9,7 @@ const Loading = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles[themify('loader', theme)]}>SW</h1>;
+      <h1 className={styles[themify('loader', theme)]}>SW</h1>
     </div>
   );
 };
