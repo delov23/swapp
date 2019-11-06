@@ -11,6 +11,8 @@ import Navigation from './components/Navigation/Navigation';
 import { Login } from './pages/Login/';
 import { AnonymousRoute } from './components/AnonymousRoute';
 import { AuthRoute } from './components/AuthRoute';
+import { Logout } from './pages/Logout';
+import { Episodes } from './pages/Episodes';
 
 const App = () => {
   const [theme, setTheme] = useState(
@@ -23,6 +25,8 @@ const App = () => {
     localStorage.setItem('theme', newTheme);
   };
 
+  const handleHome = () => <Redirect to="/episodes" />;
+
   return (
     <ApolloProvider client={client}>
       <ThemeContext.Provider value={theme}>
@@ -30,16 +34,10 @@ const App = () => {
           <BrowserRouter>
             <Navigation toggleTheme={toggleTheme} />
             <Switch>
-              <AuthRoute path="/" exact render={() => <div>Home</div>} />
+              <AuthRoute path="/" exact render={handleHome} />
               <AnonymousRoute path="/login" component={Login} />
-              <AuthRoute
-                path="/logout"
-                render={() => {
-                  localStorage.removeItem('token');
-                  client.writeData({ data: { authenticated: false } });
-                  return <Redirect to="/login" />;
-                }}
-              />
+              <AuthRoute path="/logout" component={Logout} />
+              <AuthRoute path="/episodes" component={Episodes} />
             </Switch>
           </BrowserRouter>
         </div>

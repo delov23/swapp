@@ -1,0 +1,59 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-width: 2px;
+  border-style: solid;
+  width: 18rem;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 2rem;
+  flex-basis: 30%;
+}
+
+.cardLight {
+  composes: card;
+  border-color: #e5e9f2;
+  background-color: white;
+}
+
+.cardDark {
+  composes: card;
+  border-color: #3c4858;
+  background-color: #333;
+}
+
+.cardImg {
+  border: none;
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.heading {
+  font-family: Starwars;
+  font-weight: 100;
+  margin: 0;
+  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.headingLight {
+  composes: heading;
+  color: var(--mainCyan);
+}
+
+.headingDark {
+  composes: heading;
+  color: var(--mainYellow);
+}
+
+.paragraph {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

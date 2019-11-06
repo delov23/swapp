@@ -15,8 +15,6 @@ export const AUTHENTICATED_QUERY = gql`
 `;
 
 const PermissionRoute = ({ permission, ...rest }) => {
-  console.log(rest);
-
   const {
     data: { authenticated },
     loading,
