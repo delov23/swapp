@@ -4,3 +4,5 @@
 ## Final Project for the React Web Applications Masterclass @ SoftUni
 
 ### Expected result: [Assignment](https://softuni.bg/downloads/svn/ReactWebApplications/trunk/October%202019/1.React-Advanced/Course%20Project%20Assignment.pdf)
+
+### Expected defense date: 16.11.2019
