@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/react-hooks';
 
 import styles from './Episodes.module.css';
 import EpisodeCard from './components/EpisodeCard/EpisodeCard';
-import Loading from '../../components/Loading/Loading';
+import { Loading } from '../../components/Loading/';
 
 export const ALL_EPISODES_QUERY = gql`
   query {

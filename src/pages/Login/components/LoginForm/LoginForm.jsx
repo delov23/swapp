@@ -3,7 +3,8 @@ import React, { useState, useContext } from 'react';
 import styles from './Login.module.css';
 import { themify } from '../../../../utils/themify';
 import ThemeContext from '../../../../context/ThemeContext';
-import Loading from '../../../../components/Loading/Loading';
+import { Loading } from '../../../../components/Loading/';
+import { Button } from '../../../../components/Button';
 
 const LoginForm = props => {
   const [user, setUser] = useState({ email: '', password: '' });
@@ -51,9 +52,7 @@ const LoginForm = props => {
             value={user.password}
             onChange={handleChange}
           />
-          <button type="submit" className={styles[themify('submitBtn', theme)]}>
-            Login
-          </button>
+          <Button type="submit">Login</Button>
         </form>
       </div>
     </div>

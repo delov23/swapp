@@ -1,0 +1,32 @@
+.submitBtn {
+  min-width: 20%;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  margin: 10px;
+  color: var(--mainYellow);
+  font-family: Arial;
+  font-weight: 900;
+  align-self: flex-end;
+  font-size: 1rem;
+  border: none;
+  -webkit-border-radius: 0.4rem;
+  -moz-border-radius: 0.4rem;
+  -ms-border-radius: 0.4rem;
+  -o-border-radius: 0.4rem;
+}
+
+.submitBtnLight {
+  composes: submitBtn;
+  background-color: var(--mainBlack);
+}
+
+.submitBtnDark {
+  composes: submitBtn;
+  background-color: var(--mainCyan);
+}
+
+@media screen and (max-width: 400px) {
+  .submitBtn {
+    min-width: 40%;
+  }
+}

@@ -1,0 +1,49 @@
+.card {
+  width: 28vw;
+  display: flex;
+  justify-content: flex-start;
+  margin: 5px;
+  height: 5rem;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  font-family: Starwars;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.cardLight {
+  composes: card;
+  background-color: #fff;
+  color: var(--mainCyan);
+  border-color: #e5e9f2;
+}
+
+.cardDark {
+  composes: card;
+  background-color: #333;
+  color: var(--mainYellow);
+  border-color: #3c4858;
+}
+
+.image {
+  height: 5rem;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.heading {
+  font-family: Starwars;
+  font-weight: 100;
+  margin: auto;
+  text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 100% !important;
+  }
+}
