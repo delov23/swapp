@@ -7,7 +7,7 @@ import { SpecText } from '../../../../components/SpecText';
 import { Button } from '../../../../components/Button';
 import styles from './EpisodePage.module.css';
 
-const EpisodePage = ({ loadMore, people, episode }) => {
+const EpisodePage = ({ loadMore, people, episode, loadingCharacters }) => {
   const theme = useContext(ThemeContext);
 
   return (
@@ -32,6 +32,7 @@ const EpisodePage = ({ loadMore, people, episode }) => {
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>
           {people.edges.map(({ node }) => (
             <LeftImageCard
+              key={node.id}
               width="30%"
               image={node.image}
               text={node.name}
@@ -40,7 +41,8 @@ const EpisodePage = ({ loadMore, people, episode }) => {
           ))}
         </div>
         <div style={{ textAlign: 'center' }}>
-          {people.pageInfo.hasNextPage && (
+          {loadingCharacters && <h3 style={{ margin: 0 }}>Working on it...</h3>}
+          {!loadingCharacters && people.pageInfo.hasNextPage && (
             <Button onClick={loadMore}>Load More</Button>
           )}
         </div>

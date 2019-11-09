@@ -58,7 +58,7 @@ const Characters = () => {
   if (error) return <div>Err</div>;
 
   return (
-    <main className={styles.wrapper}>
+    <main>
       <div className={styles.cardsWrapper}>
         <div className={styles.cards}>
           {data.allPeople.edges.map(({ node }) => (
