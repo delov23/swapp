@@ -14,7 +14,14 @@ const LeftImageCard = ({ width, image, text, href }) => {
       style={{ width }}
       className={styles[themify('card', theme)]}
     >
-      <img className={styles.image} src={image} alt="" />
+      <img
+        className={styles.image}
+        src={
+          image ||
+          'https://wolper.com.au/wp-content/uploads/2017/10/image-placeholder.jpg'
+        }
+        alt=""
+      />
       <h3 className={styles.heading}>{text}</h3>
     </Link>
   );
