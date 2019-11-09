@@ -70,33 +70,6 @@
   color: #3c4858;
 }
 
-.submitBtn {
-  min-width: 20%;
-  padding: 0.5rem;
-  border-radius: 0.4rem;
-  margin: 10px;
-  color: var(--mainYellow);
-  font-family: Arial;
-  font-weight: 900;
-  align-self: flex-end;
-  font-size: 1rem;
-  border: none;
-  -webkit-border-radius: 0.4rem;
-  -moz-border-radius: 0.4rem;
-  -ms-border-radius: 0.4rem;
-  -o-border-radius: 0.4rem;
-}
-
-.submitBtnLight {
-  composes: submitBtn;
-  background-color: var(--mainBlack);
-}
-
-.submitBtnDark {
-  composes: submitBtn;
-  background-color: var(--mainCyan);
-}
-
 .textError {
   margin: 10px;
   font-size: 1.2rem;
@@ -108,11 +81,7 @@
   .formHeading {
     font-size: 3rem;
   }
-
-  .submitBtn {
-    min-width: 40%;
-  }
-
+  
   .inputField {
     margin: 5px;
   }

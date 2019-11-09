@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/react-hooks';
 import { Route, Redirect } from 'react-router-dom';
 import { gql } from 'graphql.macro';
 
-import Loading from '../Loading/Loading';
+import { Loading } from '../Loading/';
 
 export const ANONYMOUS_PERMISSION = 'anonymous';
 export const AUTHENTICATED_PERMISSION = 'authenticated';
