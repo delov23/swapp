@@ -2,6 +2,8 @@ import React from 'react';
 import gql from 'graphql-tag.macro';
 import { useQuery } from '@apollo/react-hooks';
 import { Loading } from '../../components/Loading';
+import { Redirect } from 'react-router-dom';
+import EpisodePage from './components/EpisodePage/EpisodePage';
 
 export const EPISODE_QUERY = gql`
   query episode($id: ID!, $first: Int!, $after: String) {
@@ -39,10 +41,11 @@ const Episode = ({ match }) => {
     },
   });
 
-  const handleMore = () => {
+  const loadMore = () => {
     fetchMore({
       variables: { after: data.episode.people.pageInfo.endCursor },
       updateQuery: (prev, { fetchMoreResult: { episode } }) => {
+        if (!prev.episode.people.pageInfo.hasNextPage) return prev;
         return {
           episode: {
             ...episode,
@@ -57,23 +60,14 @@ const Episode = ({ match }) => {
   };
 
   if (loading) return <Loading />;
-  if (error) return <div>err</div>;
-
+  if (error) {
+    return <Redirect to="/logout" />;
+  }
   const {
-    episode: { people, title },
+    episode: { people, ...episode },
   } = data;
 
-  return (
-    <>
-      <div>
-        <h1>{title}</h1>
-        {people.edges.map(({ node }) => (
-          <h3 key={node.id}>{node.name}</h3>
-        ))}
-      </div>
-      <button onClick={handleMore}>Load more</button>
-    </>
-  );
+  return <EpisodePage people={people} loadMore={loadMore} episode={episode} />;
 };
 
 export default Episode;

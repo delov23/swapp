@@ -1,0 +1,20 @@
+.text {
+  margin: 0;
+  margin-top: 0.5rem;
+}
+
+.leftLight {
+  color: var(--dark);
+}
+
+.leftDark {
+  color: var(--mainCyan);
+}
+
+.rightLight {
+  color: var(--mainCyan);
+}
+
+.rightDark {
+  color: var(--mainYellow);
+}

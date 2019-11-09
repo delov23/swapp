@@ -1,0 +1,98 @@
+.wrapper {
+  width: 80vw;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.poster {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  height: 15rem;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  font-family: Starwars;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.posterLight {
+  composes: poster;
+  background-color: var(--mainWhite);
+  border-color: #e5e9f2;
+}
+
+.posterDark {
+  composes: poster;
+  background-color: var(--dark);
+  border-color: var(--darkBorder);
+}
+
+.image {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 100%;
+}
+
+.titles {
+  margin: auto;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 100;
+  margin: 0;
+  margin-left: 0.5rem;
+}
+
+.titleLight {
+  composes: title;
+  color: var(--mainCyan);
+}
+
+.titleDark {
+  composes: title;
+  color: var(--mainYellow);
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 100;
+  margin: 0;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.subtitleLight {
+  composes: subtitle;
+  color: var(--lightText);
+}
+
+.subtitleDark {
+  composes: subtitle;
+  color: var(--mainCyan);
+}
+
+.box {
+  padding: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.boxLight {
+  composes: box;
+  background-color: var(--mainWhite);
+}
+
+.boxDark {
+  composes: box;
+  background-color: var(--dark);
+}
+
+.opening {
+  margin: 0;
+}
