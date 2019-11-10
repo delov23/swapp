@@ -1,0 +1,78 @@
+.content {
+  display: flex;
+}
+
+.heading {
+  text-align: center;
+  font-family: Starwars;
+  font-weight: 100;
+  margin: 2px 0;
+}
+
+.headingLight {
+  composes: heading;
+  color: var(--mainCyan);
+}
+
+.headingDark {
+  composes: heading;
+  color: var(--mainYellow);
+}
+
+.subheading {
+  composes: heading;
+}
+
+.subheadingLight {
+  composes: subheading;
+}
+
+.subheadingDark {
+  composes: subheading;
+  color: var(--mainCyan);
+}
+
+.block {
+  flex: 1;
+}
+
+.leftBlock {
+  composes: block;
+  margin-right: 1rem;
+}
+
+.rightBlock {
+  composes: block;
+  margin-left: 1rem;
+  background-color: black;
+}
+
+.captionLight {
+  fill: var(--mainCyan);
+}
+
+.captionDark {
+  fill: var(--mainYellow);
+}
+
+.dot {
+  r: 5;
+  -webkit-transition: r 0.2s;
+  -o-transition: r 0.2s;
+  transition: r 0.2s;
+}
+
+.dot:hover {
+  stroke: #bbb;
+  r: 8;
+}
+
+.dotsLight {
+  composes: dot;
+  fill: var(--mainYellow);
+}
+
+.dotsDark {
+  composes: dot;
+  fill: var(--mainCyan);
+}
