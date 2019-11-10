@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 import StarshipPage from './components/StarshipPage/StarshipPage';
 import gql from 'graphql-tag.macro';
@@ -32,7 +32,7 @@ const Starship = ({ match }) => {
   });
 
   if (loading) return <Loading />;
-  if (error) return <div>Er</div>;
+  if (error) return <Redirect to="/logout" />;
 
   return <StarshipPage starship={data.starship} />;
 };

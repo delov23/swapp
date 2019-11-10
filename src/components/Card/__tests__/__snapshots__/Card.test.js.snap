@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> should match snapshot 1`] = `
+<div
+  className="cardLight"
+>
+  <h3
+    className="titleLight"
+  >
+    Example
+  </h3>
+  <img
+    alt="Starship"
+    className="image"
+    src="https://img.com/img.png"
+  />
+  <div />
+</div>
+`;

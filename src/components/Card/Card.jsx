@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 
 import ThemeContext from '../../context/ThemeContext';
 import styles from './Card.module.css';
@@ -14,6 +15,11 @@ const Card = ({ image, title, children }) => {
       <div>{children}</div>
     </div>
   );
+};
+
+Card.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default Card;

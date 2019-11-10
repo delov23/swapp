@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Button /> should match snapshot 1`] = `
+<Link
+  className="cardLight"
+  style={
+    Object {
+      "width": "50vw",
+    }
+  }
+  to="/logout"
+>
+  <img
+    alt=""
+    className="image"
+    src="https://img.com/img.png"
+  />
+  <h3
+    className="heading"
+  >
+    Example Example
+  </h3>
+</Link>
+`;
