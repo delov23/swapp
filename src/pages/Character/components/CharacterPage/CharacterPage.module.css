@@ -1,0 +1,48 @@
+.content {
+  display: flex;
+}
+
+.name {
+  text-align: center;
+  font-family: Starwars;
+  font-weight: 100;
+}
+
+.nameLight {
+  composes: name;
+  color: var(--mainCyan);
+}
+
+.nameDark {
+  composes: name;
+  color: var(--mainYellow);
+}
+
+.heading {
+  text-align: center;
+  font-family: Starwars;
+  font-weight: 100;
+}
+
+.headingLight {
+  composes: heading;
+}
+
+.headingDark {
+  composes: heading;
+  color: var(--mainCyan);
+}
+
+.block {
+  flex: 1;
+}
+
+.leftBlock {
+  composes: block;
+  margin-right: 1rem;
+}
+
+.rightBlock {
+  composes: block;
+  margin-left: 1rem;
+}

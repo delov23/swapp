@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["themify", "Starwars"],
+  "cSpell.words": [
+    "Starwars",
+    "homeworld",
+    "hyperdrive",
+    "rating",
+    "starships",
+    "themify"
+  ],
   "css.lint.validProperties": ["composes"],
   "css.lint.unknownAtRules": "ignore"
 }

@@ -1,0 +1,47 @@
+.card {
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1.5rem;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+.cardLight {
+  composes: card;
+  background-color: var(--mainWhite);
+  border-color: var(--lightBorder);
+}
+
+.cardDark {
+  composes: card;
+  background-color: var(--dark);
+  border-color: var(--darkBorder);
+}
+
+.title {
+  font-family: Starwars;
+  font-size: 1.2rem;
+  font-weight: 100;
+  margin: 0.5rem 0;
+  text-align: center;
+}
+
+.titleLight {
+  composes: title;
+  color: var(--mainCyan);
+}
+
+.titleDark {
+  composes: title;
+  color: var(--mainYellow);
+}
+
+.image {
+  width: 100%;
+}

@@ -7,14 +7,16 @@ import ThemeContext, { LIGHT_THEME, DARK_THEME } from './context/ThemeContext';
 import { themify } from './utils/themify';
 import styles from './App.module.css';
 
-import Navigation from './components/Navigation/Navigation';
+import { Navigation } from './components/Navigation';
 import { Login } from './pages/Login';
 import { AnonymousRoute } from './components/AnonymousRoute';
 import { AuthRoute } from './components/AuthRoute';
 import { Logout } from './pages/Logout';
 import { Episodes } from './pages/Episodes';
 import { Characters } from './pages/Characters';
-import Episode from './pages/Episode/Episode';
+import { Episode } from './pages/Episode';
+import { Character } from './pages/Character';
+import { Starship } from './pages/Starship';
 
 const App = () => {
   const [theme, setTheme] = useState(
@@ -36,12 +38,17 @@ const App = () => {
           <BrowserRouter>
             <Navigation toggleTheme={toggleTheme} />
             <Switch>
-              <AuthRoute path="/" exact render={handleHome} />
               <AnonymousRoute path="/login" component={Login} />
+              <AuthRoute exact path="/" render={handleHome} />
               <AuthRoute path="/logout" component={Logout} />
               <AuthRoute exact path="/episodes" component={Episodes} />
               <AuthRoute path="/episodes/:episodeId" component={Episode} />
-              <AuthRoute path="/characters" component={Characters} />
+              <AuthRoute exact path="/characters" component={Characters} />
+              <AuthRoute
+                path="/characters/:characterId"
+                component={Character}
+              />
+              <AuthRoute path="/starships/:starshipId" component={Starship} />
             </Switch>
           </BrowserRouter>
         </div>
