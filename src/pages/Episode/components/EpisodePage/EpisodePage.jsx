@@ -11,7 +11,7 @@ const EpisodePage = ({ loadMore, people, episode, loadingCharacters }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <main className={styles.wrapper}>
+    <main>
       <section className={styles[themify('poster', theme)]}>
         <img className={styles.image} src={episode.image} alt="Episode" />
         <div className={styles.titles}>
@@ -41,7 +41,9 @@ const EpisodePage = ({ loadMore, people, episode, loadingCharacters }) => {
           ))}
         </div>
         <div style={{ textAlign: 'center' }}>
-          {loadingCharacters && <h3 style={{ margin: 0 }}>Working on it...</h3>}
+          {loadingCharacters && (
+            <h3 className={styles.loadingFallback}>Working on it...</h3>
+          )}
           {!loadingCharacters && people.pageInfo.hasNextPage && (
             <Button onClick={loadMore}>Load More</Button>
           )}

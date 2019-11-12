@@ -9,9 +9,6 @@ import ThemeContext from '../../../../context/ThemeContext';
 const CharacterPage = ({ character, starships }) => {
   const theme = useContext(ThemeContext);
 
-  console.log(character);
-  console.log(starships);
-
   return (
     <main>
       <h1 className={styles[themify('name', theme)]}>{character.name}</h1>
@@ -32,6 +29,7 @@ const CharacterPage = ({ character, starships }) => {
           <hr />
           {starships.edges.map(({ node }) => (
             <LeftImageCard
+              key={node.id}
               image={node.image}
               text={node.name}
               width="100%"

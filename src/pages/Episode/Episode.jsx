@@ -3,7 +3,7 @@ import gql from 'graphql-tag.macro';
 import { useQuery } from '@apollo/react-hooks';
 import { Loading } from '../../components/Loading';
 import { Redirect } from 'react-router-dom';
-import EpisodePage from './components/EpisodePage/EpisodePage';
+import { EpisodePage } from './components/EpisodePage';
 
 export const EPISODE_QUERY = gql`
   query episode($id: ID!, $first: Int!, $after: String) {

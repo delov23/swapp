@@ -3,7 +3,7 @@ import { gql } from 'graphql.macro';
 import { useApolloClient, useMutation } from '@apollo/react-hooks';
 import { Redirect } from 'react-router-dom';
 
-import LoginForm from './components/LoginForm/LoginForm';
+import { LoginForm } from './components/LoginForm';
 
 export const LOG_IN = gql`
   mutation signIn($email: String!, $password: String!) {

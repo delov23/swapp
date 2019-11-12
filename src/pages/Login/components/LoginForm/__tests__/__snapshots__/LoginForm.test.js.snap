@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginForm /> should match snapshot 1`] = `
+<div
+  className="formWrapper"
+>
+  <div
+    className="formContent"
+  >
+    <h1
+      className="formHeading"
+    >
+      swapp
+    </h1>
+    <form
+      className="loginFormLight"
+      onSubmit={[Function]}
+    >
+      <input
+        className="inputFieldLight"
+        name="email"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <input
+        className="inputFieldLight"
+        name="password"
+        onChange={[Function]}
+        type="password"
+        value=""
+      />
+      <Button
+        type="submit"
+      >
+        Login
+      </Button>
+    </form>
+  </div>
+</div>
+`;

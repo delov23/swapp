@@ -1,8 +1,8 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
-import StarshipPage from './components/StarshipPage/StarshipPage';
+import { StarshipPage } from './components/StarshipPage';
 import gql from 'graphql-tag.macro';
 import { Loading } from '../../components/Loading';
 
@@ -24,6 +24,22 @@ export const STARSHIP_QUERY = gql`
   }
 `;
 
+export const STATS_QUERY = gql`
+  query allStarships($type: String!) {
+    allStarships(first: 100, filter: { starshipClass: $type }) {
+      edges {
+        node {
+          cost
+          maxAtmosphericSpeed
+          maxMLPerHour
+          hyperdriveRating
+          crew
+        }
+      }
+    }
+  }
+`;
+
 const Starship = ({ match }) => {
   const { data, loading, error } = useQuery(STARSHIP_QUERY, {
     variables: {
@@ -31,10 +47,19 @@ const Starship = ({ match }) => {
     },
   });
 
-  if (loading) return <Loading />;
-  if (error) return <div>Er</div>;
+  const { data: stData, loading: stLoading, error: stError } = useQuery(
+    STATS_QUERY,
+    {
+      variables: {
+        type: data.starship ? data.starship.starshipClass : null,
+      },
+    },
+  );
 
-  return <StarshipPage starship={data.starship} />;
+  if (loading || stLoading || stError) return <Loading />;
+  if (error) return <Redirect to="/logout" />;
+
+  return <StarshipPage starship={data.starship} stData={stData} />;
 };
 
 export default Starship;

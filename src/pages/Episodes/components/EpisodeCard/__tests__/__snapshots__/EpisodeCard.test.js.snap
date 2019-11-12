@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EpisodeCard /> should match snapshot 1`] = `
+<Link
+  className="cardLight"
+  to="/episodes/episodes.1"
+>
+  <img
+    alt=""
+    className="cardImg"
+    src="image"
+  />
+  <h3
+    className="headingLight"
+  >
+    A new hope
+  </h3>
+  <p
+    className="paragraph"
+  >
+    LONG TEXT
+  </p>
+</Link>
+`;

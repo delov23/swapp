@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SpecText /> should match snapshot 1`] = `
+<p
+  className="text"
+>
+  <span
+    className="leftLight"
+  >
+    Bonus points
+    : 
+  </span>
+  <span
+    className="rightLight"
+  >
+    9000
+  </span>
+</p>
+`;
