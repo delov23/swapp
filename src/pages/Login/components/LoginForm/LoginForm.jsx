@@ -6,14 +6,14 @@ import ThemeContext from '../../../../context/ThemeContext';
 import { Loading } from '../../../../components/Loading/';
 import { Button } from '../../../../components/Button';
 
-const LoginForm = props => {
+const LoginForm = ({ handleLogin, loading, error }) => {
   const [user, setUser] = useState({ email: '', password: '' });
   const theme = useContext(ThemeContext);
 
   const handleSubmit = ev => {
     ev.preventDefault();
     const { email, password } = user;
-    props.handleLogin({ variables: { email, password } });
+    handleLogin({ variables: { email, password } });
   };
 
   const handleChange = ({ target: { value, name } }) => {
@@ -23,7 +23,7 @@ const LoginForm = props => {
     });
   };
 
-  if (props.loading) return <Loading />;
+  if (loading) return <Loading />;
 
   return (
     <div className={styles.formWrapper}>
@@ -33,9 +33,9 @@ const LoginForm = props => {
           className={styles[themify('loginForm', theme)]}
           onSubmit={handleSubmit}
         >
-          {props.error && (
+          {error && (
             <p className={styles.textError}>
-              {props.error.message.replace('GraphQL error: ', '')}
+              {error.message.replace('GraphQL error: ', '')}
             </p>
           )}
           <input

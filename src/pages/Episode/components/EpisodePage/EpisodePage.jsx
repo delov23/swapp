@@ -41,7 +41,9 @@ const EpisodePage = ({ loadMore, people, episode, loadingCharacters }) => {
           ))}
         </div>
         <div style={{ textAlign: 'center' }}>
-          {loadingCharacters && <h3 style={{ margin: 0 }}>Working on it...</h3>}
+          {loadingCharacters && (
+            <h3 className={styles.loadingFallback}>Working on it...</h3>
+          )}
           {!loadingCharacters && people.pageInfo.hasNextPage && (
             <Button onClick={loadMore}>Load More</Button>
           )}

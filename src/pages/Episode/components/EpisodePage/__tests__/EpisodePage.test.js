@@ -5,11 +5,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { EpisodePage } from '../';
 import { LeftImageCard } from '../../../../../components/LeftImageCard';
 import { SpecText } from '../../../../../components/SpecText';
+import { Button } from '../../../../../components/Button';
 
 const loadMock = jest.fn();
 
 const EXAMPLE_PROPS = {
-  loadMore: new loadMock(),
+  loadMore: loadMock,
   people: {
     edges: [
       {
@@ -60,5 +61,47 @@ describe('<EpisodePage />', () => {
 
     expect(wrapper.find(LeftImageCard)).toHaveLength(2);
     expect(wrapper.find(SpecText)).toHaveLength(2);
+  });
+
+  it('should hide the button', () => {
+    const wrapper = mount(
+      <Router>
+        <EpisodePage {...EXAMPLE_PROPS} />
+      </Router>,
+    );
+
+    expect(wrapper.find(Button)).toHaveLength(0);
+  });
+
+  it('should show the button/loading', async () => {
+    const wrapper = mount(
+      <Router>
+        <EpisodePage
+          {...{
+            ...EXAMPLE_PROPS,
+            people: {
+              ...EXAMPLE_PROPS.people,
+              pageInfo: { hasNextPage: true, endCursor: 'HASH_2' },
+            },
+          }}
+        />
+      </Router>,
+    );
+    wrapper.find(Button).simulate('click');
+    expect(loadMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('should show the button/loading', async () => {
+    const wrapper = mount(
+      <Router>
+        <EpisodePage
+          {...{
+            ...EXAMPLE_PROPS,
+            loadingCharacters: true,
+          }}
+        />
+      </Router>,
+    );
+    expect(wrapper.find('.loadingFallback')).toHaveLength(1);
   });
 });
