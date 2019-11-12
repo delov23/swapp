@@ -65,4 +65,17 @@ describe('<Button />', () => {
       EXAMPLE_PROPS.width,
     );
   });
+
+  it('should display props from the parent', () => {
+    const wrapper = mount(
+      <Router>
+        <LeftImageCard {...{ ...EXAMPLE_PROPS, image: '' }} />
+      </Router>,
+    );
+
+    expect(wrapper.find('img')).toHaveProp(
+      'src',
+      'https://wolper.com.au/wp-content/uploads/2017/10/image-placeholder.jpg',
+    );
+  });
 });

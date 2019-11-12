@@ -1,12 +1,12 @@
-.deck {
-  margin: auto;
-  width: 80vw;
-}
-
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, 20rem);
   justify-content: center;
-  min-width: 80vw;
   margin: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .cards {
+    grid-template-columns: repeat(auto-fill, 22rem);
+  }
 }

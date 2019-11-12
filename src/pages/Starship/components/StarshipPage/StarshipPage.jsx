@@ -8,7 +8,10 @@ import { themify } from '../../../../utils/themify';
 import { Card } from '../../../../components/Card';
 import { SpecText } from '../../../../components/SpecText';
 
-const StarshipPage = ({ starship: { name, model, image, ...stats } }) => {
+const StarshipPage = ({
+  starship: { name, model, image, ...stats },
+  stData,
+}) => {
   const theme = useContext(ThemeContext);
 
   const captions = {
@@ -31,6 +34,8 @@ const StarshipPage = ({ starship: { name, model, image, ...stats } }) => {
       meta: { color: theme === LIGHT_THEME ? '#ffe300' : '#4bd5ee' },
     },
   ];
+
+  console.log(stData);
 
   return (
     <main>

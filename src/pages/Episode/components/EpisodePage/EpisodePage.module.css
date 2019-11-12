@@ -1,10 +1,5 @@
-.wrapper {
-  width: 80vw;
-  margin: auto;
-  margin-top: 2rem;
-}
-
 .poster {
+  margin-top: 2rem;
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -99,4 +94,34 @@
 
 .loadingFallback {
   margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .poster {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+  }
+
+  .image {
+    margin-top: 2px;
+    width: 60%;
+    height: unset;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+  .title {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 1.4rem;
+  }
 }

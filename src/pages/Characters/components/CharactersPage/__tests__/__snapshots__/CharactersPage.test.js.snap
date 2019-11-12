@@ -1,31 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CharactersPage /> should match snapshot 1`] = `
-<main>
+<main
+  className="contentWrapper"
+>
   <div
-    className="cardsWrapper"
+    className="cards"
   >
-    <div
-      className="cards"
-    >
-      <LeftImageCard
-        href="/characters/people.1"
-        image="image 1"
-        key="people.1"
-        text="Name 1"
-        width="20rem"
-      />
-      <LeftImageCard
-        href="/characters/people.2"
-        image="image 2"
-        key="people.2"
-        text="Name 2"
-        width="20rem"
-      />
-    </div>
+    <LeftImageCard
+      href="/characters/people.1"
+      image="image 1"
+      key="people.1"
+      text="Name 1"
+      width="20rem"
+    />
+    <LeftImageCard
+      href="/characters/people.2"
+      image="image 2"
+      key="people.2"
+      text="Name 2"
+      width="20rem"
+    />
   </div>
-  <Button>
-    Load more
-  </Button>
+  <div
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    <Button>
+      Load more
+    </Button>
+  </div>
 </main>
 `;

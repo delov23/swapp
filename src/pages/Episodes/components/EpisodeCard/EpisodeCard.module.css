@@ -57,3 +57,9 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
+
+@media screen and (max-width: 800px) {
+  .card {
+    width: 19.5rem;
+  }
+}

@@ -11,7 +11,7 @@ const EpisodePage = ({ loadMore, people, episode, loadingCharacters }) => {
   const theme = useContext(ThemeContext);
 
   return (
-    <main className={styles.wrapper}>
+    <main>
       <section className={styles[themify('poster', theme)]}>
         <img className={styles.image} src={episode.image} alt="Episode" />
         <div className={styles.titles}>

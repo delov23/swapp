@@ -5,6 +5,7 @@ import { MockedProvider } from '@apollo/react-testing';
 
 import { Character } from '../';
 import { CHARACTER_QUERY } from '../Character';
+import { AUTHENTICATED_QUERY } from '../../../components/PermissionRoute/PermissionRoute';
 // import { wait } from '@testing-library/react';
 // import { CharacterPage } from '../components/CharacterPage';
 
@@ -51,6 +52,16 @@ const mocks = [
             ...EXAMPLE_DATA.starships,
           },
         },
+      },
+    }),
+  },
+  {
+    request: {
+      query: AUTHENTICATED_QUERY,
+    },
+    result: () => ({
+      data: {
+        authenticated: true,
       },
     }),
   },

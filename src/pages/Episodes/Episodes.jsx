@@ -29,7 +29,7 @@ const Episodes = () => {
   if (error) return <Redirect to="/logout" />;
 
   return (
-    <main className={styles.deck}>
+    <main>
       <div className={styles.cards}>
         {data.allEpisodes.edges.map(({ node }) => (
           <EpisodeCard key={node.id} episode={node} />

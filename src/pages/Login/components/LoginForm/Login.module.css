@@ -77,12 +77,18 @@
   color: tomato;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .formHeading {
     font-size: 3rem;
   }
-  
+
   .inputField {
     margin: 5px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .loginForm {
+    width: 30vw;
   }
 }

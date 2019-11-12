@@ -7,21 +7,23 @@ import styles from './CharactersPage.module.css';
 
 const CharactersPage = ({ people, pageInfo, handleMore }) => {
   return (
-    <main>
-      <div className={styles.cardsWrapper}>
-        <div className={styles.cards}>
-          {people.map(({ node }) => (
-            <LeftImageCard
-              key={node.id}
-              width="20rem"
-              text={node.name}
-              image={node.image}
-              href={'/characters/' + node.id}
-            />
-          ))}
-        </div>
+    <main className={styles.contentWrapper}>
+      <div className={styles.cards}>
+        {people.map(({ node }) => (
+          <LeftImageCard
+            key={node.id}
+            width="20rem"
+            text={node.name}
+            image={node.image}
+            href={'/characters/' + node.id}
+          />
+        ))}
       </div>
-      {pageInfo.hasNextPage && <Button onClick={handleMore}>Load more</Button>}
+      <div style={{ textAlign: 'center' }}>
+        {pageInfo.hasNextPage && (
+          <Button onClick={handleMore}>Load more</Button>
+        )}
+      </div>
     </main>
   );
 };

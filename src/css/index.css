@@ -33,3 +33,15 @@ hr {
   src: local('Starwars'),
     url(../fonts/SfDistantGalaxyAlternate-OE4d.ttf) format('truetype');
 }
+
+@media screen and (min-width: 1500px) {
+  main {
+    width: 65vw;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main {
+    width: 90vw;
+  }
+}
