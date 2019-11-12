@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<EpisodePage /> should match snapshot 1`] = `
+<main
+  className="wrapper"
+>
+  <section
+    className="posterLight"
+  >
+    <img
+      alt="Episode"
+      className="image"
+      src="image"
+    />
+    <div
+      className="titles"
+    >
+      <h1
+        className="titleLight"
+      >
+        Star Wars: Episode 
+        10
+      </h1>
+      <h2
+        className="subtitleLight"
+      />
+    </div>
+  </section>
+  <div
+    className="boxLight"
+  >
+    <p
+      className="opening"
+    >
+      Long......
+    </p>
+    <SpecText
+      left="Director"
+      right="Name"
+    />
+    <SpecText
+      left="Release Date"
+      right="1993-11-02"
+    />
+  </div>
+  <section>
+    <div
+      style={
+        Object {
+          "display": "flex",
+          "flexWrap": "wrap",
+        }
+      }
+    >
+      <LeftImageCard
+        href="/characters/person.1"
+        image="image 2"
+        key="person.1"
+        text="Name 11"
+        width="30%"
+      />
+      <LeftImageCard
+        href="/characters/person.2"
+        image="image 3"
+        key="person.2"
+        text="Name 22"
+        width="30%"
+      />
+    </div>
+    <div
+      style={
+        Object {
+          "textAlign": "center",
+        }
+      }
+    />
+  </section>
+</main>
+`;

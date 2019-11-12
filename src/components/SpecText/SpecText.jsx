@@ -17,8 +17,8 @@ const SpecText = ({ left, right }) => {
 };
 
 SpecText.propTypes = {
-  left: PropTypes.any.isRequired,
-  right: PropTypes.any.isRequired,
+  left: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  right: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
 
 export default SpecText;

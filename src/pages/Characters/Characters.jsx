@@ -1,11 +1,10 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag.macro';
+import { Redirect } from 'react-router-dom';
 
 import { Loading } from '../../components/Loading';
-import { Button } from '../../components/Button';
-import { LeftImageCard } from '../../components/LeftImageCard';
-import styles from './Characters.module.css';
+import { CharactersPage } from './components/CharactersPage';
 
 export const CHARACTERS_QUERY = gql`
   query characters($first: Int!, $after: String) {
@@ -55,27 +54,14 @@ const Characters = () => {
   };
 
   if (loading) return <Loading />;
-  if (error) return <div>Err</div>;
+  if (error) return <Redirect />;
 
   return (
-    <main>
-      <div className={styles.cardsWrapper}>
-        <div className={styles.cards}>
-          {data.allPeople.edges.map(({ node }) => (
-            <LeftImageCard
-              key={node.id}
-              width="20rem"
-              text={node.name}
-              image={node.image}
-              href={'/characters/' + node.id}
-            />
-          ))}
-        </div>
-      </div>
-      {data.allPeople.pageInfo.hasNextPage && (
-        <Button onClick={handleClick}>Load more</Button>
-      )}
-    </main>
+    <CharactersPage
+      people={data.allPeople.edges}
+      pageInfo={data.allPeople.pageInfo}
+      handleMore={handleClick}
+    />
   );
 };
 
