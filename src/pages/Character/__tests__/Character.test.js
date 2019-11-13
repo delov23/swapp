@@ -1,13 +1,12 @@
 import React from 'react';
-import { /*mount,*/ shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { MockedProvider } from '@apollo/react-testing';
-// import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import wait from 'waait';
 
 import { Character } from '../';
 import { CHARACTER_QUERY } from '../Character';
-import { AUTHENTICATED_QUERY } from '../../../components/PermissionRoute/PermissionRoute';
-// import { wait } from '@testing-library/react';
-// import { CharacterPage } from '../components/CharacterPage';
+import { CharacterPage } from '../components/CharacterPage';
 
 export const EXAMPLE_DATA = {
   character: {
@@ -46,28 +45,56 @@ const mocks = [
     },
     result: () => ({
       data: {
-        character: {
-          ...EXAMPLE_DATA.character,
+        person: {
+          id: 'people.1',
+          name: 'Luke Skywalker',
+          birthYear: null,
+          height: 172,
+          mass: 77,
+          image:
+            'https://links.gunaxin.com/content/images/post_images/Luke_Skywalker_039_s_Original_039_Star_Wars_039_Lightsaber_Is_Going_Up_For_Auction_1544116268_4528.jpg',
+          homeworld: {
+            name: 'Tatooine',
+          },
+          species: {
+            name: 'Human',
+          },
           starships: {
-            ...EXAMPLE_DATA.starships,
+            edges: [
+              {
+                node: {
+                  id: 'starships.12',
+                  name: 'X-wing',
+                  image:
+                    'https://static.turbosquid.com/Preview/2015/10/14__02_29_23/xwingtopleft_01_open_01.jpgb5dc9c7c-25bc-44f8-88ba-50e41873111aOriginal.jpg',
+                },
+              },
+              {
+                node: {
+                  id: 'starships.22',
+                  name: 'Imperial shuttle',
+                  image:
+                    'http://dimmerlightstudios.com/wp-content/uploads/2017/08/star-wars-imperial-shuttle-front-shaded_on-white-folded.jpg',
+                },
+              },
+            ],
           },
         },
       },
     }),
   },
+];
+
+const errorMocks = [
   {
     request: {
-      query: AUTHENTICATED_QUERY,
+      query: CHARACTER_QUERY,
     },
-    result: () => ({
-      data: {
-        authenticated: true,
-      },
-    }),
+    result: new Error('Test'),
   },
 ];
 
-const EXAMPLE_PROPS = { match: { params: { characterId: 10 } } };
+const EXAMPLE_PROPS = { match: { params: { characterId: 'people.1' } } };
 
 describe('<Character />', () => {
   it('should match snapshot', () => {
@@ -80,18 +107,33 @@ describe('<Character />', () => {
     ).toMatchSnapshot();
   });
 
-  // it('should display loading screen', async () => {
-  //   const wrapper = mount(
-  //     <MockedProvider mocks={mocks} addTypename={false}>
-  //       <Router>
-  //         <Character {...EXAMPLE_PROPS} />
-  //       </Router>
-  //     </MockedProvider>,
-  //   );
+  it('should display Character', async () => {
+    const wrapper = mount(
+      <Router>
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <Character {...EXAMPLE_PROPS} />
+        </MockedProvider>
+      </Router>,
+    );
 
-  //   await wait(() => {
-  //     wrapper.update();
-  //     expect(wrapper.find(CharacterPage)).toHaveLength(1);
-  //   });
-  // });
+    await wait(0);
+    wrapper.update();
+
+    expect(wrapper.find(CharacterPage)).toHaveLength(1);
+  });
+
+  it('should redirect when error occurs', async () => {
+    const wrapper = mount(
+      <Router>
+        <MockedProvider mocks={errorMocks} addTypename={false}>
+          <Character {...EXAMPLE_PROPS} />
+        </MockedProvider>
+      </Router>,
+    );
+
+    await wait(0);
+    wrapper.update();
+
+    expect(wrapper.find(Redirect)).toHaveLength(1);
+  });
 });

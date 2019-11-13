@@ -23,8 +23,8 @@ const App = () => {
     localStorage.getItem('theme') || LIGHT_THEME,
   );
 
-  const toggleTheme = () => {
-    const newTheme = theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
+  const toggleTheme = currTheme => {
+    const newTheme = currTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
   };
@@ -36,7 +36,7 @@ const App = () => {
       <ThemeContext.Provider value={theme}>
         <div className={styles[themify('appWrapper', theme)]}>
           <BrowserRouter>
-            <Navigation toggleTheme={toggleTheme} />
+            <Navigation toggleTheme={() => toggleTheme(theme)} />
             <Switch>
               <AnonymousRoute path="/login" component={Login} />
               <AuthRoute exact path="/" render={handleHome} />

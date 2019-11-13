@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Character /> should match snapshot 1`] = `
+exports[`<Episode /> should match snapshot 1`] = `
 <ApolloProvider
   client={
     ApolloClient {
@@ -42,7 +42,7 @@ exports[`<Character /> should match snapshot 1`] = `
       "link": MockLink {
         "addTypename": false,
         "mockedResponsesByKey": Object {
-          "{\\"query\\":\\"query character($id: ID!) {\\\\n  person(id: $id) {\\\\n    id\\\\n    name\\\\n    height\\\\n    mass\\\\n    image\\\\n    species {\\\\n      name\\\\n    }\\\\n    homeworld {\\\\n      name\\\\n    }\\\\n    starships {\\\\n      edges {\\\\n        node {\\\\n          id\\\\n          name\\\\n          image\\\\n        }\\\\n      }\\\\n    }\\\\n  }\\\\n}\\\\n\\"}": Array [
+          "{\\"query\\":\\"query episode($id: ID!, $first: Int!, $after: String) {\\\\n  episode(id: $id) {\\\\n    id\\\\n    title\\\\n    openingCrawl\\\\n    director\\\\n    releaseDate\\\\n    episodeId\\\\n    image\\\\n    people(first: $first, after: $after) {\\\\n      edges {\\\\n        node {\\\\n          id\\\\n          name\\\\n          image\\\\n        }\\\\n        cursor\\\\n      }\\\\n      pageInfo {\\\\n        hasNextPage\\\\n        endCursor\\\\n      }\\\\n    }\\\\n  }\\\\n}\\\\n\\"}": Array [
             Object {
               "request": Object {
                 "query": Object {
@@ -52,7 +52,7 @@ exports[`<Character /> should match snapshot 1`] = `
                       "kind": "OperationDefinition",
                       "name": Object {
                         "kind": "Name",
-                        "value": "character",
+                        "value": "episode",
                       },
                       "operation": "query",
                       "selectionSet": Object {
@@ -79,7 +79,7 @@ exports[`<Character /> should match snapshot 1`] = `
                             "kind": "Field",
                             "name": Object {
                               "kind": "Name",
-                              "value": "person",
+                              "value": "episode",
                             },
                             "selectionSet": Object {
                               "kind": "SelectionSet",
@@ -99,7 +99,7 @@ exports[`<Character /> should match snapshot 1`] = `
                                   "kind": "Field",
                                   "name": Object {
                                     "kind": "Name",
-                                    "value": "name",
+                                    "value": "title",
                                   },
                                 },
                                 Object {
@@ -108,7 +108,7 @@ exports[`<Character /> should match snapshot 1`] = `
                                   "kind": "Field",
                                   "name": Object {
                                     "kind": "Name",
-                                    "value": "height",
+                                    "value": "openingCrawl",
                                   },
                                 },
                                 Object {
@@ -117,7 +117,25 @@ exports[`<Character /> should match snapshot 1`] = `
                                   "kind": "Field",
                                   "name": Object {
                                     "kind": "Name",
-                                    "value": "mass",
+                                    "value": "director",
+                                  },
+                                },
+                                Object {
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "releaseDate",
+                                  },
+                                },
+                                Object {
+                                  "arguments": Array [],
+                                  "directives": Array [],
+                                  "kind": "Field",
+                                  "name": Object {
+                                    "kind": "Name",
+                                    "value": "episodeId",
                                   },
                                 },
                                 Object {
@@ -130,58 +148,41 @@ exports[`<Character /> should match snapshot 1`] = `
                                   },
                                 },
                                 Object {
-                                  "arguments": Array [],
-                                  "directives": Array [],
-                                  "kind": "Field",
-                                  "name": Object {
-                                    "kind": "Name",
-                                    "value": "species",
-                                  },
-                                  "selectionSet": Object {
-                                    "kind": "SelectionSet",
-                                    "selections": Array [
-                                      Object {
-                                        "arguments": Array [],
-                                        "directives": Array [],
-                                        "kind": "Field",
+                                  "arguments": Array [
+                                    Object {
+                                      "kind": "Argument",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "first",
+                                      },
+                                      "value": Object {
+                                        "kind": "Variable",
                                         "name": Object {
                                           "kind": "Name",
-                                          "value": "name",
+                                          "value": "first",
                                         },
                                       },
-                                    ],
-                                  },
-                                },
-                                Object {
-                                  "arguments": Array [],
-                                  "directives": Array [],
-                                  "kind": "Field",
-                                  "name": Object {
-                                    "kind": "Name",
-                                    "value": "homeworld",
-                                  },
-                                  "selectionSet": Object {
-                                    "kind": "SelectionSet",
-                                    "selections": Array [
-                                      Object {
-                                        "arguments": Array [],
-                                        "directives": Array [],
-                                        "kind": "Field",
+                                    },
+                                    Object {
+                                      "kind": "Argument",
+                                      "name": Object {
+                                        "kind": "Name",
+                                        "value": "after",
+                                      },
+                                      "value": Object {
+                                        "kind": "Variable",
                                         "name": Object {
                                           "kind": "Name",
-                                          "value": "name",
+                                          "value": "after",
                                         },
                                       },
-                                    ],
-                                  },
-                                },
-                                Object {
-                                  "arguments": Array [],
+                                    },
+                                  ],
                                   "directives": Array [],
                                   "kind": "Field",
                                   "name": Object {
                                     "kind": "Name",
-                                    "value": "starships",
+                                    "value": "people",
                                   },
                                   "selectionSet": Object {
                                     "kind": "SelectionSet",
@@ -238,6 +239,47 @@ exports[`<Character /> should match snapshot 1`] = `
                                                 ],
                                               },
                                             },
+                                            Object {
+                                              "arguments": Array [],
+                                              "directives": Array [],
+                                              "kind": "Field",
+                                              "name": Object {
+                                                "kind": "Name",
+                                                "value": "cursor",
+                                              },
+                                            },
+                                          ],
+                                        },
+                                      },
+                                      Object {
+                                        "arguments": Array [],
+                                        "directives": Array [],
+                                        "kind": "Field",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "pageInfo",
+                                        },
+                                        "selectionSet": Object {
+                                          "kind": "SelectionSet",
+                                          "selections": Array [
+                                            Object {
+                                              "arguments": Array [],
+                                              "directives": Array [],
+                                              "kind": "Field",
+                                              "name": Object {
+                                                "kind": "Name",
+                                                "value": "hasNextPage",
+                                              },
+                                            },
+                                            Object {
+                                              "arguments": Array [],
+                                              "directives": Array [],
+                                              "kind": "Field",
+                                              "name": Object {
+                                                "kind": "Name",
+                                                "value": "endCursor",
+                                              },
+                                            },
                                           ],
                                         },
                                       },
@@ -271,34 +313,74 @@ exports[`<Character /> should match snapshot 1`] = `
                             },
                           },
                         },
+                        Object {
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NonNullType",
+                            "type": Object {
+                              "kind": "NamedType",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "Int",
+                              },
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "first",
+                            },
+                          },
+                        },
+                        Object {
+                          "directives": Array [],
+                          "kind": "VariableDefinition",
+                          "type": Object {
+                            "kind": "NamedType",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "String",
+                            },
+                          },
+                          "variable": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "after",
+                            },
+                          },
+                        },
                       ],
                     },
                   ],
                   "kind": "Document",
                   "loc": Object {
-                    "end": 326,
+                    "end": 439,
                     "source": Object {
                       "body": "
-  query character($id: ID!) {
-    person(id: $id) {
+  query episode($id: ID!, $first: Int!, $after: String) {
+    episode(id: $id) {
       id
-      name
-      height
-      mass
+      title
+      openingCrawl
+      director
+      releaseDate
+      episodeId
       image
-      species {
-        name
-      }
-      homeworld {
-        name
-      }
-      starships {
+      people(first: $first, after: $after) {
         edges {
           node {
             id
             name
             image
           }
+          cursor
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
         }
       }
     }
@@ -314,7 +396,8 @@ exports[`<Character /> should match snapshot 1`] = `
                   },
                 },
                 "variables": Object {
-                  "id": "people.1",
+                  "first": 5,
+                  "id": "films.1",
                 },
               },
               "result": [Function],
@@ -406,7 +489,7 @@ exports[`<Character /> should match snapshot 1`] = `
         "link": MockLink {
           "addTypename": false,
           "mockedResponsesByKey": Object {
-            "{\\"query\\":\\"query character($id: ID!) {\\\\n  person(id: $id) {\\\\n    id\\\\n    name\\\\n    height\\\\n    mass\\\\n    image\\\\n    species {\\\\n      name\\\\n    }\\\\n    homeworld {\\\\n      name\\\\n    }\\\\n    starships {\\\\n      edges {\\\\n        node {\\\\n          id\\\\n          name\\\\n          image\\\\n        }\\\\n      }\\\\n    }\\\\n  }\\\\n}\\\\n\\"}": Array [
+            "{\\"query\\":\\"query episode($id: ID!, $first: Int!, $after: String) {\\\\n  episode(id: $id) {\\\\n    id\\\\n    title\\\\n    openingCrawl\\\\n    director\\\\n    releaseDate\\\\n    episodeId\\\\n    image\\\\n    people(first: $first, after: $after) {\\\\n      edges {\\\\n        node {\\\\n          id\\\\n          name\\\\n          image\\\\n        }\\\\n        cursor\\\\n      }\\\\n      pageInfo {\\\\n        hasNextPage\\\\n        endCursor\\\\n      }\\\\n    }\\\\n  }\\\\n}\\\\n\\"}": Array [
               Object {
                 "request": Object {
                   "query": Object {
@@ -416,7 +499,7 @@ exports[`<Character /> should match snapshot 1`] = `
                         "kind": "OperationDefinition",
                         "name": Object {
                           "kind": "Name",
-                          "value": "character",
+                          "value": "episode",
                         },
                         "operation": "query",
                         "selectionSet": Object {
@@ -443,7 +526,7 @@ exports[`<Character /> should match snapshot 1`] = `
                               "kind": "Field",
                               "name": Object {
                                 "kind": "Name",
-                                "value": "person",
+                                "value": "episode",
                               },
                               "selectionSet": Object {
                                 "kind": "SelectionSet",
@@ -463,7 +546,7 @@ exports[`<Character /> should match snapshot 1`] = `
                                     "kind": "Field",
                                     "name": Object {
                                       "kind": "Name",
-                                      "value": "name",
+                                      "value": "title",
                                     },
                                   },
                                   Object {
@@ -472,7 +555,7 @@ exports[`<Character /> should match snapshot 1`] = `
                                     "kind": "Field",
                                     "name": Object {
                                       "kind": "Name",
-                                      "value": "height",
+                                      "value": "openingCrawl",
                                     },
                                   },
                                   Object {
@@ -481,7 +564,25 @@ exports[`<Character /> should match snapshot 1`] = `
                                     "kind": "Field",
                                     "name": Object {
                                       "kind": "Name",
-                                      "value": "mass",
+                                      "value": "director",
+                                    },
+                                  },
+                                  Object {
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "releaseDate",
+                                    },
+                                  },
+                                  Object {
+                                    "arguments": Array [],
+                                    "directives": Array [],
+                                    "kind": "Field",
+                                    "name": Object {
+                                      "kind": "Name",
+                                      "value": "episodeId",
                                     },
                                   },
                                   Object {
@@ -494,58 +595,41 @@ exports[`<Character /> should match snapshot 1`] = `
                                     },
                                   },
                                   Object {
-                                    "arguments": Array [],
-                                    "directives": Array [],
-                                    "kind": "Field",
-                                    "name": Object {
-                                      "kind": "Name",
-                                      "value": "species",
-                                    },
-                                    "selectionSet": Object {
-                                      "kind": "SelectionSet",
-                                      "selections": Array [
-                                        Object {
-                                          "arguments": Array [],
-                                          "directives": Array [],
-                                          "kind": "Field",
+                                    "arguments": Array [
+                                      Object {
+                                        "kind": "Argument",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "first",
+                                        },
+                                        "value": Object {
+                                          "kind": "Variable",
                                           "name": Object {
                                             "kind": "Name",
-                                            "value": "name",
+                                            "value": "first",
                                           },
                                         },
-                                      ],
-                                    },
-                                  },
-                                  Object {
-                                    "arguments": Array [],
-                                    "directives": Array [],
-                                    "kind": "Field",
-                                    "name": Object {
-                                      "kind": "Name",
-                                      "value": "homeworld",
-                                    },
-                                    "selectionSet": Object {
-                                      "kind": "SelectionSet",
-                                      "selections": Array [
-                                        Object {
-                                          "arguments": Array [],
-                                          "directives": Array [],
-                                          "kind": "Field",
+                                      },
+                                      Object {
+                                        "kind": "Argument",
+                                        "name": Object {
+                                          "kind": "Name",
+                                          "value": "after",
+                                        },
+                                        "value": Object {
+                                          "kind": "Variable",
                                           "name": Object {
                                             "kind": "Name",
-                                            "value": "name",
+                                            "value": "after",
                                           },
                                         },
-                                      ],
-                                    },
-                                  },
-                                  Object {
-                                    "arguments": Array [],
+                                      },
+                                    ],
                                     "directives": Array [],
                                     "kind": "Field",
                                     "name": Object {
                                       "kind": "Name",
-                                      "value": "starships",
+                                      "value": "people",
                                     },
                                     "selectionSet": Object {
                                       "kind": "SelectionSet",
@@ -602,6 +686,47 @@ exports[`<Character /> should match snapshot 1`] = `
                                                   ],
                                                 },
                                               },
+                                              Object {
+                                                "arguments": Array [],
+                                                "directives": Array [],
+                                                "kind": "Field",
+                                                "name": Object {
+                                                  "kind": "Name",
+                                                  "value": "cursor",
+                                                },
+                                              },
+                                            ],
+                                          },
+                                        },
+                                        Object {
+                                          "arguments": Array [],
+                                          "directives": Array [],
+                                          "kind": "Field",
+                                          "name": Object {
+                                            "kind": "Name",
+                                            "value": "pageInfo",
+                                          },
+                                          "selectionSet": Object {
+                                            "kind": "SelectionSet",
+                                            "selections": Array [
+                                              Object {
+                                                "arguments": Array [],
+                                                "directives": Array [],
+                                                "kind": "Field",
+                                                "name": Object {
+                                                  "kind": "Name",
+                                                  "value": "hasNextPage",
+                                                },
+                                              },
+                                              Object {
+                                                "arguments": Array [],
+                                                "directives": Array [],
+                                                "kind": "Field",
+                                                "name": Object {
+                                                  "kind": "Name",
+                                                  "value": "endCursor",
+                                                },
+                                              },
                                             ],
                                           },
                                         },
@@ -635,34 +760,74 @@ exports[`<Character /> should match snapshot 1`] = `
                               },
                             },
                           },
+                          Object {
+                            "directives": Array [],
+                            "kind": "VariableDefinition",
+                            "type": Object {
+                              "kind": "NonNullType",
+                              "type": Object {
+                                "kind": "NamedType",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "Int",
+                                },
+                              },
+                            },
+                            "variable": Object {
+                              "kind": "Variable",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "first",
+                              },
+                            },
+                          },
+                          Object {
+                            "directives": Array [],
+                            "kind": "VariableDefinition",
+                            "type": Object {
+                              "kind": "NamedType",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "String",
+                              },
+                            },
+                            "variable": Object {
+                              "kind": "Variable",
+                              "name": Object {
+                                "kind": "Name",
+                                "value": "after",
+                              },
+                            },
+                          },
                         ],
                       },
                     ],
                     "kind": "Document",
                     "loc": Object {
-                      "end": 326,
+                      "end": 439,
                       "source": Object {
                         "body": "
-  query character($id: ID!) {
-    person(id: $id) {
+  query episode($id: ID!, $first: Int!, $after: String) {
+    episode(id: $id) {
       id
-      name
-      height
-      mass
+      title
+      openingCrawl
+      director
+      releaseDate
+      episodeId
       image
-      species {
-        name
-      }
-      homeworld {
-        name
-      }
-      starships {
+      people(first: $first, after: $after) {
         edges {
           node {
             id
             name
             image
           }
+          cursor
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
         }
       }
     }
@@ -678,7 +843,8 @@ exports[`<Character /> should match snapshot 1`] = `
                     },
                   },
                   "variables": Object {
-                    "id": "people.1",
+                    "first": 5,
+                    "id": "films.1",
                   },
                 },
                 "result": [Function],
@@ -777,11 +943,11 @@ exports[`<Character /> should match snapshot 1`] = `
     }
   }
 >
-  <Character
+  <Episode
     match={
       Object {
         "params": Object {
-          "characterId": "people.1",
+          "episodeId": "films.1",
         },
       }
     }

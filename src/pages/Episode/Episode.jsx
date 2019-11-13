@@ -39,7 +39,6 @@ const Episode = ({ match }) => {
       first: 5,
       id: match.params.episodeId,
     },
-    notifyOnNetworkStatusChange: () => console.log(2),
   });
 
   const loadMore = () => {
@@ -61,9 +60,8 @@ const Episode = ({ match }) => {
   };
 
   if ((!data || !data.episode) && loading) return <Loading />;
-  if (error) {
-    return <Redirect to="/logout" />;
-  }
+  if (error) return <Redirect to="/logout" />;
+
   const {
     episode: { people, ...episode },
   } = data;
