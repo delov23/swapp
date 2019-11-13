@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AnonymousRoute /> should match snapshot 1`] = `
+<PermissionRoute
+  permission="anonymous"
+/>
+`;
