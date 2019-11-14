@@ -13,7 +13,7 @@ const Navigation = ({ toggleTheme }) => {
   return (
     <nav className={styles[themify('navigation', theme)]}>
       <button className={styles.siteLogo} onClick={toggleTheme}>
-        SWApp
+        SWAPP
       </button>
       <ul className={styles.links}>
         <li>

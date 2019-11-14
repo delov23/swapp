@@ -11,7 +11,7 @@ const Card = ({ image, title, children }) => {
   return (
     <div className={styles[themify('card', theme)]}>
       <h3 className={styles[themify('title', theme)]}>{title}</h3>
-      <img className={styles.image} src={image} alt="Starship" />
+      {image && <img className={styles.image} src={image} alt="Starship" />}
       <div>{children}</div>
     </div>
   );

@@ -10,7 +10,7 @@ exports[`<LoginForm /> should match snapshot 1`] = `
     <h1
       className="formHeading"
     >
-      swapp
+      SWAPP
     </h1>
     <form
       className="loginFormLight"

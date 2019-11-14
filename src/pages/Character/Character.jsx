@@ -33,8 +33,8 @@ export const CHARACTER_QUERY = gql`
   }
 `;
 
-const Character = ({ match: { params } }) => {
-  const { characterId } = params;
+const Character = ({ match }) => {
+  const { characterId } = match.params;
   const { data, loading, error } = useQuery(CHARACTER_QUERY, {
     variables: {
       id: characterId,
@@ -43,6 +43,7 @@ const Character = ({ match: { params } }) => {
 
   if (loading) return <Loading />;
   if (error) return <Redirect to="/logout" />;
+  if (!data.person) return <Redirect to="/characters" />;
 
   const { starships, ...character } = data.person;
 
