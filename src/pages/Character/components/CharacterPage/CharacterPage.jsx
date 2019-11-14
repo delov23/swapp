@@ -16,10 +16,24 @@ const CharacterPage = ({ character, starships }) => {
       <section className={styles.content}>
         <div className={styles.leftBlock}>
           <Card image={character.image} title={character.name}>
-            <SpecText left="Height" right={character.height} />
-            <SpecText left="Weight" right={character.mass} />
-            <SpecText left="Species" right={character.species.name} />
-            <SpecText left="Home World" right={character.homeworld.name} />
+            <SpecText left="Height" right={character.height || 'N/A'} />
+            <SpecText left="Weight" right={character.mass || 'N/A'} />
+            <SpecText
+              left="Species"
+              right={
+                character.species && character.species.name
+                  ? character.species.name
+                  : 'N/A'
+              }
+            />
+            <SpecText
+              left="Home World"
+              right={
+                character.homeworld && character.homeworld.name
+                  ? character.homeworld.name
+                  : 'N/A'
+              }
+            />
           </Card>
         </div>
         <div className={styles.rightBlock}>
@@ -27,6 +41,9 @@ const CharacterPage = ({ character, starships }) => {
             Piloted Starships
           </h2>
           <hr />
+          {!starships.edges.length && (
+            <h2 className={styles[themify('name', theme)]}>No starships</h2>
+          )}
           {starships.edges.map(({ node }) => (
             <LeftImageCard
               key={node.id}

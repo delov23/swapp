@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
 import './css/index.css';
-import './fonts/SfDistantGalaxyAlternate-OE4d.ttf';
+import './fonts/STARWARS.ttf';
 import App from './App';
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -28,7 +28,7 @@ const LoginForm = ({ handleLogin, loading, error }) => {
   return (
     <div className={styles.formWrapper}>
       <div className={styles.formContent}>
-        <h1 className={styles.formHeading}>swapp</h1>
+        <h1 className={styles.formHeading}>SWAPP</h1>
         <form
           className={styles[themify('loginForm', theme)]}
           onSubmit={handleSubmit}

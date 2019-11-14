@@ -8,6 +8,46 @@ import { themify } from '../../../../utils/themify';
 import { Card } from '../../../../components/Card';
 import { SpecText } from '../../../../components/SpecText';
 
+const maxOfNode = (property, data) => {
+  return +data.reduce((acc, { node }) => {
+    return node[property] > acc ? node[property] : acc;
+  }, 0);
+};
+
+const minOfNode = (property, data) => {
+  return +data.reduce((acc, { node }) => {
+    return node[property] < acc ? node[property] : acc;
+  }, 0);
+};
+
+const percentageValue = (value, property, data) => {
+  return (
+    (value - minOfNode(property, data)) /
+      (maxOfNode(property, data) - minOfNode(property, data)) || 0
+  );
+};
+
+const getChartOptions = theme => {
+  return {
+    dots: true,
+    captionProps: () => ({
+      className: styles[themify('caption', theme)],
+      textAnchor: 'middle',
+      fontSize: 20,
+      fontFamily: 'sans-serif',
+    }),
+    captions: true,
+    captionMargin: 10,
+    dotProps: () => ({
+      className: styles[themify('dots', theme)],
+    }),
+    setViewBox: () => `-50 -50 500 500`,
+    scaleProps: () => ({ className: styles.scales }),
+    axes: false,
+    scales: 5,
+  };
+};
+
 const StarshipPage = ({
   starship: { name, model, image, ...stats },
   stData,
@@ -16,26 +56,36 @@ const StarshipPage = ({
 
   const captions = {
     maxAtmosphericSpeed: 'Max Atm. Speed',
-    cost: 'Cost',
     maxMLPerHour: 'Max ML/h',
-    crew: 'Crew',
     hyperdriveRating: 'HyperD Rat.',
+    crew: 'Crew',
+    cost: 'Cost',
   };
 
   const data = [
     {
       data: {
-        maxAtmosphericSpeed: 0.733,
-        cost: 0.33,
-        maxMLPerHour: 0.11,
-        crew: 0.33,
-        hyperdriveRating: 0.677,
+        maxAtmosphericSpeed: percentageValue(
+          stats.maxAtmosphericSpeed,
+          'maxAtmosphericSpeed',
+          stData,
+        ),
+        cost: percentageValue(stats.cost, 'cost', stData),
+        maxMLPerHour: percentageValue(
+          stats.maxMLPerHour,
+          'maxMLPerHour',
+          stData,
+        ),
+        crew: percentageValue(stats.crew, 'crew', stData),
+        hyperdriveRating: percentageValue(
+          stats.hyperdriveRating,
+          'hyperdriveRating',
+          stData,
+        ),
       },
       meta: { color: theme === LIGHT_THEME ? '#ffe300' : '#4bd5ee' },
     },
   ];
-
-  console.log(stData);
 
   return (
     <main>
@@ -46,35 +96,39 @@ const StarshipPage = ({
         <div className={styles.leftBlock}>
           <Card image={image} title={name}>
             <SpecText left="Class" right={stats.starshipClass} />
-            <SpecText left="Cost" right={stats.cost || 0} />
-            <SpecText left="Crew" right={stats.crew} />
-            <SpecText
-              left="Max Atmospheric Speed"
-              right={stats.maxAtmosphericSpeed}
-            />
-            <SpecText left="Hyperdrive Rating" right={stats.hyperdriveRating} />
+            <SpecText left="Cost" right={(stats.cost || 0) + ' credits'} />
+            {stats.crew && <SpecText left="Crew" right={stats.crew} />}
+            {stats.maxAtmosphericSpeed && (
+              <SpecText
+                left="Max Atmospheric Speed"
+                right={stats.maxAtmosphericSpeed}
+              />
+            )}
+            {stats.maxMLPerHour && (
+              <SpecText left="Max ML/h" right={stats.maxMLPerHour} />
+            )}
+            {stats.hyperdriveRating && (
+              <SpecText
+                left="Hyperdrive Rating"
+                right={stats.hyperdriveRating}
+              />
+            )}
           </Card>
         </div>
         <div className={styles.rightBlock}>
-          <RadarChart
-            captions={captions}
-            data={data}
-            size={820}
-            options={{
-              dots: true,
-              captionProps: () => ({
-                className: styles[themify('caption', theme)],
-                textAnchor: 'middle',
-                fontSize: 16,
-                fontFamily: 'sans-serif',
-              }),
-              dotProps: () => ({
-                className: styles[themify('dots', theme)],
-              }),
-              axes: false,
-              captionMargin: 0,
-            }}
-          />
+          <h2 className={styles[themify('subheading', theme)]}>
+            Compared to Starship Class Max
+          </h2>
+          <div className={styles.chartWrapper}>
+            <div className={styles.chart}>
+              <RadarChart
+                captions={captions}
+                data={data}
+                options={getChartOptions(theme)}
+                size={400}
+              />
+            </div>
+          </div>
         </div>
       </section>
     </main>

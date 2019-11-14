@@ -23,15 +23,10 @@ main {
   margin-top: 1rem;
 }
 
-hr {
-  border: 0px;
-  border: 0.5px solid gray;
-}
-
 @font-face {
   font-family: 'Starwars';
-  src: local('Starwars'),
-    url(../fonts/SfDistantGalaxyAlternate-OE4d.ttf) format('truetype');
+  src: local('STARWARS'),
+    url(../fonts/STARWARS.ttf) format('truetype');
 }
 
 @media screen and (min-width: 1500px) {

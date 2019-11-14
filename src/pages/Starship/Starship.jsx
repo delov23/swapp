@@ -51,15 +51,17 @@ const Starship = ({ match }) => {
     STATS_QUERY,
     {
       variables: {
-        type: data.starship ? data.starship.starshipClass : null,
+        type: data && data.starship ? data.starship.starshipClass : null,
       },
     },
   );
 
-  if (loading || stLoading || stError) return <Loading />;
-  if (error) return <Redirect to="/logout" />;
+  if (loading || stLoading || (stError && !data)) return <Loading />;
+  if (error || (data && stError)) return <Redirect to="/logout" />;
 
-  return <StarshipPage starship={data.starship} stData={stData} />;
+  return (
+    <StarshipPage starship={data.starship} stData={stData.allStarships.edges} />
+  );
 };
 
 export default Starship;

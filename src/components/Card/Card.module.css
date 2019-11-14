@@ -45,3 +45,15 @@
 .image {
   width: 100%;
 }
+
+@media screen and (max-width: 800px) {
+  .card {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .card {
+    width: 70%;
+  }
+}

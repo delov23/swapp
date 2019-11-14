@@ -1,5 +1,6 @@
 .content {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .heading {
@@ -32,27 +33,38 @@
   color: var(--mainCyan);
 }
 
-.block {
-  flex: 1;
-}
-
 .leftBlock {
-  composes: block;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   margin-right: 1rem;
 }
 
 .rightBlock {
-  composes: block;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   margin-left: 1rem;
+}
+
+.chart {
   background-color: black;
+}
+
+.chartWrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .captionLight {
   fill: var(--mainCyan);
+  margin: 10px;
 }
 
 .captionDark {
   fill: var(--mainYellow);
+  margin: 10px;
 }
 
 .dot {
@@ -75,4 +87,27 @@
 .dotsDark {
   composes: dot;
   fill: var(--mainCyan);
+}
+
+.scales {
+  fill: #000;
+  stroke: #333;
+}
+
+@media screen and (max-width: 800px) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .rightBlock {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .leftBlock {
+    align-items: center;    
+    margin-right: 0;
+    margin-top: 10px;
+  }
 }
