@@ -8,35 +8,6 @@ import { Character } from '../';
 import { CHARACTER_QUERY } from '../Character';
 import { CharacterPage } from '../components/CharacterPage';
 
-export const EXAMPLE_DATA = {
-  character: {
-    image: 'https://image.com/img.jpg',
-    name: 'Name',
-    mass: 209,
-    height: 200,
-    species: { name: 'Spec' },
-    homeworld: { name: 'Home' },
-  },
-  starships: {
-    edges: [
-      {
-        node: {
-          image: 'https://image.com/img2.jpg',
-          name: 'Edge 1',
-          id: 'starship.1',
-        },
-      },
-      {
-        node: {
-          image: 'https://image.com/img3.jpg',
-          name: 'Edge 2',
-          id: 'starship.2',
-        },
-      },
-    ],
-  },
-};
-
 const mocks = [
   {
     request: {
@@ -94,6 +65,20 @@ const errorMocks = [
   },
 ];
 
+const nullMocks = [
+  {
+    request: {
+      query: CHARACTER_QUERY,
+      variables: { id: 'people.123980' },
+    },
+    result: () => ({
+      data: {
+        person: null,
+      },
+    }),
+  },
+];
+
 const EXAMPLE_PROPS = { match: { params: { characterId: 'people.1' } } };
 
 describe('<Character />', () => {
@@ -135,5 +120,22 @@ describe('<Character />', () => {
     wrapper.update();
 
     expect(wrapper.find(Redirect)).toHaveLength(1);
+  });
+
+  it('should redirect when no data', async () => {
+    const wrapper = mount(
+      <Router>
+        <MockedProvider mocks={nullMocks} addTypename={false}>
+          <Character
+            {...{ match: { params: { characterId: 'people.123980' } } }}
+          />
+        </MockedProvider>
+      </Router>,
+    );
+
+    await wait(0);
+    wrapper.update();
+
+    expect(wrapper.find(Redirect)).toHaveProp('to', '/characters');
   });
 });

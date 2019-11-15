@@ -45,4 +45,19 @@ describe('<PermissionRoute />', () => {
 
     expect(wrapper).toContainReact(<Loading />);
   });
+
+  // it('should return redirect', async () => {
+  //   const wrapper = mount(
+  //     <Router>
+  //       <MockedProvider mocks={mockAuth} addTypename={false}>
+  //         <PermissionRoute permission={ANONYMOUS_PERMISSION} />
+  //       </MockedProvider>
+  //     </Router>,
+  //   );
+
+  //   await wait(0);
+  //   wrapper.update();
+
+  //   expect(wrapper.find(Redirect)).toHaveLength(1);
+  // });
 });
