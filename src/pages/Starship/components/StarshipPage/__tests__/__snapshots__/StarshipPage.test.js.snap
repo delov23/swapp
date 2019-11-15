@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StarshipPage /> should match snapshot 1`] = `
+<main>
+  <h1
+    className="headingLight"
+  >
+    CR90 corvette
+  </h1>
+  <h2
+    className="subheadingLight"
+  >
+    (
+    CR90 corvette
+    )
+  </h2>
+  <hr />
+  <section
+    className="content"
+  >
+    <div
+      className="leftBlock"
+    >
+      <Card
+        image="https://vignette.wikia.nocookie.net/starwarsmush/images/d/dd/Ship_capital_cr90.jpg/revision/latest?cb=20090605054905"
+        title="CR90 corvette"
+      >
+        <SpecText
+          left="Class"
+          right="corvette"
+        />
+        <SpecText
+          left="Cost"
+          right="0 credits"
+        />
+        <SpecText
+          left="Crew"
+          right={165}
+        />
+        <SpecText
+          left="Max Atmospheric Speed"
+          right={950}
+        />
+        <SpecText
+          left="Max ML/h"
+          right={60}
+        />
+        <SpecText
+          left="Hyperdrive Rating"
+          right={2}
+        />
+      </Card>
+    </div>
+    <div
+      className="rightBlock"
+    >
+      <h2
+        className="subheadingLight"
+      >
+        Compared to Starship Class Max
+      </h2>
+      <div
+        className="chartWrapper"
+      >
+        <div
+          className="chart"
+        >
+          <f
+            captions={
+              Object {
+                "cost": "Cost",
+                "crew": "Crew",
+                "hyperdriveRating": "HyperD Rat.",
+                "maxAtmosphericSpeed": "Max Atm. Speed",
+                "maxMLPerHour": "Max ML/h",
+              }
+            }
+            data={
+              Array [
+                Object {
+                  "data": Object {
+                    "cost": 0,
+                    "crew": 1,
+                    "hyperdriveRating": 1,
+                    "maxAtmosphericSpeed": 1,
+                    "maxMLPerHour": 1,
+                  },
+                  "meta": Object {
+                    "color": "#ffe300",
+                  },
+                },
+              ]
+            }
+            options={
+              Object {
+                "axes": false,
+                "captionMargin": 10,
+                "captionProps": [Function],
+                "captions": true,
+                "dotProps": [Function],
+                "dots": true,
+                "scaleProps": [Function],
+                "scales": 5,
+                "setViewBox": [Function],
+              }
+            }
+            size={400}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+`;

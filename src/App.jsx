@@ -18,13 +18,17 @@ import { Episode } from './pages/Episode';
 import { Character } from './pages/Character';
 import { Starship } from './pages/Starship';
 
+export const getToggledTheme = theme => {
+  return theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
+};
+
 const App = () => {
   const [theme, setTheme] = useState(
     localStorage.getItem('theme') || LIGHT_THEME,
   );
 
   const toggleTheme = currTheme => {
-    const newTheme = currTheme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
+    const newTheme = getToggledTheme(currTheme);
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
   };
