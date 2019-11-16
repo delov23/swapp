@@ -7,6 +7,7 @@ import wait from 'waait';
 import { Episodes } from '../';
 import { ALL_EPISODES_QUERY } from '../Episodes';
 import { EpisodeCard } from '../components/EpisodeCard';
+import { act } from 'react-dom/test-utils';
 
 const mocks = [
   {
@@ -61,31 +62,39 @@ describe('<Episodes />', () => {
   });
 
   it('should display EpisodeCards', async () => {
-    const wrapper = mount(
-      <Router>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Episodes />
-        </MockedProvider>
-      </Router>,
-    );
+    let wrapper;
 
-    await wait(0);
-    wrapper.update();
+    await act(async () => {
+      wrapper = mount(
+        <Router>
+          <MockedProvider mocks={mocks} addTypename={false}>
+            <Episodes />
+          </MockedProvider>
+        </Router>,
+      );
+
+      await wait(0);
+      wrapper.update();
+    });
 
     expect(wrapper.find(EpisodeCard)).toHaveLength(2);
   });
 
   it('should redirect when error occurs', async () => {
-    const wrapper = mount(
-      <Router>
-        <MockedProvider mocks={errorMocks} addTypename={false}>
-          <Episodes />
-        </MockedProvider>
-      </Router>,
-    );
+    let wrapper;
 
-    await wait(0);
-    wrapper.update();
+    await act(async () => {
+      wrapper = mount(
+        <Router>
+          <MockedProvider mocks={errorMocks} addTypename={false}>
+            <Episodes />
+          </MockedProvider>
+        </Router>,
+      );
+
+      await wait(0);
+      wrapper.update();
+    });
 
     expect(wrapper.find(Redirect)).toHaveLength(1);
   });

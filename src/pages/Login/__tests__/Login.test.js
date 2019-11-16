@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Login } from '../';
 import { LOG_IN } from '../Login';
 import { Button } from '../../../components/Button';
+import { act } from 'react-dom/test-utils';
 
 const mocks = [
   {
@@ -36,17 +37,22 @@ describe('<Login />', () => {
   });
 
   it('should logIn', async () => {
-    const wrapper = mount(
-      <Router>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Login />
-        </MockedProvider>
-      </Router>,
-    );
+    let wrapper;
 
-    wrapper.find(Button).simulate('submit');
-    await wait(10);
-    wrapper.update();
+    await act(async () => {
+      wrapper = mount(
+        <Router>
+          <MockedProvider mocks={mocks} addTypename={false}>
+            <Login />
+          </MockedProvider>
+        </Router>,
+      );
+
+      wrapper.find(Button).simulate('submit');
+      await wait(10);
+      wrapper.update();
+    });
+
     expect(localStorage.getItem('token')).toEqual('Example');
   });
 });

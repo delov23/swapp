@@ -274,7 +274,7 @@ exports[`<Characters /> should match snapshot 1`] = `
                   },
                 },
                 "variables": Object {
-                  "first": 10,
+                  "first": 12,
                 },
               },
               "result": [Function],
@@ -511,7 +511,7 @@ exports[`<Characters /> should match snapshot 1`] = `
                 },
                 "variables": Object {
                   "after": "Y3Vyc29yLnBlb3BsZS4xMQ==",
-                  "first": 10,
+                  "first": 12,
                 },
               },
               "result": [Function],
@@ -748,7 +748,7 @@ exports[`<Characters /> should match snapshot 1`] = `
                 },
                 "variables": Object {
                   "after": "Y3Vyc29yLnBlb3BsZS4xMQ22",
-                  "first": 10,
+                  "first": 12,
                 },
               },
               "result": [Function],
@@ -1072,7 +1072,7 @@ exports[`<Characters /> should match snapshot 1`] = `
                     },
                   },
                   "variables": Object {
-                    "first": 10,
+                    "first": 12,
                   },
                 },
                 "result": [Function],
@@ -1309,7 +1309,7 @@ exports[`<Characters /> should match snapshot 1`] = `
                   },
                   "variables": Object {
                     "after": "Y3Vyc29yLnBlb3BsZS4xMQ==",
-                    "first": 10,
+                    "first": 12,
                   },
                 },
                 "result": [Function],
@@ -1546,7 +1546,7 @@ exports[`<Characters /> should match snapshot 1`] = `
                   },
                   "variables": Object {
                     "after": "Y3Vyc29yLnBlb3BsZS4xMQ22",
-                    "first": 10,
+                    "first": 12,
                   },
                 },
                 "result": [Function],

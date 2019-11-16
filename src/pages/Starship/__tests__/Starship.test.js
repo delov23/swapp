@@ -5,6 +5,7 @@ import { MockedProvider } from '@apollo/react-testing';
 import { Starship } from '../';
 import { STARSHIP_QUERY, STATS_QUERY } from '../Starship';
 import { Loading } from '../../../components/Loading';
+import { act } from 'react-dom/test-utils';
 
 const EXAMPLE_PROPS = {
   match: {
@@ -105,12 +106,16 @@ describe('<Starship />', () => {
     ).toMatchSnapshot();
   });
 
-  it('should display loading screen', () => {
-    const wrapper = mount(
-      <MockedProvider mocks={mocks} addTypename={false}>
-        <Starship {...EXAMPLE_PROPS} />
-      </MockedProvider>,
-    );
+  it('should display loading screen', async () => {
+    let wrapper;
+
+    await act(async () => {
+      wrapper = mount(
+        <MockedProvider mocks={mocks} addTypename={false}>
+          <Starship {...EXAMPLE_PROPS} />
+        </MockedProvider>,
+      );
+    });
 
     expect(wrapper.find(Loading)).toHaveLength(1);
   });

@@ -28,14 +28,14 @@ export const CHARACTERS_QUERY = gql`
 const Characters = () => {
   const { data, loading, error, fetchMore } = useQuery(CHARACTERS_QUERY, {
     variables: {
-      first: 10,
+      first: 12,
     },
   });
 
   const handleClick = () => {
     fetchMore({
       variables: {
-        first: 10,
+        first: 12,
         after: data.allPeople.pageInfo.endCursor,
       },
       updateQuery: (prev, { fetchMoreResult }) => {
@@ -54,7 +54,7 @@ const Characters = () => {
   };
 
   if (loading) return <Loading />;
-  if (error) return <Redirect />;
+  if (error) return <Redirect to="logout" />;
 
   return (
     <CharactersPage
