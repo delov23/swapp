@@ -7,6 +7,7 @@ import wait from 'waait';
 import { Character } from '../';
 import { CHARACTER_QUERY } from '../Character';
 import { CharacterPage } from '../components/CharacterPage';
+import { act } from 'react-dom/test-utils';
 
 const mocks = [
   {
@@ -93,48 +94,60 @@ describe('<Character />', () => {
   });
 
   it('should display Character', async () => {
-    const wrapper = mount(
-      <Router>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Character {...EXAMPLE_PROPS} />
-        </MockedProvider>
-      </Router>,
-    );
+    let wrapper;
 
-    await wait(0);
-    wrapper.update();
+    await act(async () => {
+      wrapper = mount(
+        <Router>
+          <MockedProvider mocks={mocks} addTypename={false}>
+            <Character {...EXAMPLE_PROPS} />
+          </MockedProvider>
+        </Router>,
+      );
+
+      await wait(0);
+      wrapper.update();
+    });
 
     expect(wrapper.find(CharacterPage)).toHaveLength(1);
   });
 
   it('should redirect when error occurs', async () => {
-    const wrapper = mount(
-      <Router>
-        <MockedProvider mocks={errorMocks} addTypename={false}>
-          <Character {...EXAMPLE_PROPS} />
-        </MockedProvider>
-      </Router>,
-    );
+    let wrapper;
 
-    await wait(0);
-    wrapper.update();
+    await act(async () => {
+      wrapper = mount(
+        <Router>
+          <MockedProvider mocks={errorMocks} addTypename={false}>
+            <Character {...EXAMPLE_PROPS} />
+          </MockedProvider>
+        </Router>,
+      );
+
+      await wait(0);
+      wrapper.update();
+    });
 
     expect(wrapper.find(Redirect)).toHaveLength(1);
   });
 
   it('should redirect when no data', async () => {
-    const wrapper = mount(
-      <Router>
-        <MockedProvider mocks={nullMocks} addTypename={false}>
-          <Character
-            {...{ match: { params: { characterId: 'people.123980' } } }}
-          />
-        </MockedProvider>
-      </Router>,
-    );
+    let wrapper;
 
-    await wait(0);
-    wrapper.update();
+    await act(async () => {
+      wrapper = mount(
+        <Router>
+          <MockedProvider mocks={nullMocks} addTypename={false}>
+            <Character
+              {...{ match: { params: { characterId: 'people.123980' } } }}
+            />
+          </MockedProvider>
+        </Router>,
+      );
+
+      await wait(0);
+      wrapper.update();
+    });
 
     expect(wrapper.find(Redirect)).toHaveProp('to', '/characters');
   });

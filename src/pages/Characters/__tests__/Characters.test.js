@@ -8,13 +8,14 @@ import Characters, { CHARACTERS_QUERY } from '../Characters';
 import { CharactersPage } from '../components/CharactersPage';
 import { LeftImageCard } from '../../../components/LeftImageCard';
 import { Button } from '../../../components/Button';
+import { act } from 'react-dom/test-utils';
 
 const mocks = [
   {
     request: {
       query: CHARACTERS_QUERY,
       variables: {
-        first: 10,
+        first: 12,
       },
     },
     result: () => ({
@@ -61,7 +62,7 @@ const mocks = [
     request: {
       query: CHARACTERS_QUERY,
       variables: {
-        first: 10,
+        first: 12,
         after: 'Y3Vyc29yLnBlb3BsZS4xMQ==',
       },
     },
@@ -72,7 +73,7 @@ const mocks = [
             {
               node: {
                 name: 'Luke Skywalker',
-                id: 'people.1',
+                id: 'people.221',
                 image:
                   'https://links.gunaxin.com/content/images/post_images/Luke_Skywalker_039_s_Original_039_Star_Wars_039_Lightsaber_Is_Going_Up_For_Auction_1544116268_4528.jpg',
               },
@@ -81,7 +82,7 @@ const mocks = [
             {
               node: {
                 name: 'Obi-Wan Kenobi',
-                id: 'people.10',
+                id: 'people.2210',
                 image:
                   'https://fsmedia.imgix.net/eb/d1/19/f1/9a64/4b2d/8471/d02314b53684/obi-wan-kenobi-in-the-original-star-wars.jpeg?crop=edges&fit=crop&auto=compress&h=1200&w=1200',
               },
@@ -90,7 +91,7 @@ const mocks = [
             {
               node: {
                 name: 'Anakin Skywalker',
-                id: 'people.11',
+                id: 'people.2211',
                 image:
                   'https://upload.wikimedia.org/wikipedia/en/thumb/7/74/Anakin-Jedi.jpg/220px-Anakin-Jedi.jpg',
               },
@@ -109,7 +110,7 @@ const mocks = [
     request: {
       query: CHARACTERS_QUERY,
       variables: {
-        first: 10,
+        first: 12,
         after: 'Y3Vyc29yLnBlb3BsZS4xMQ22',
       },
     },
@@ -140,73 +141,70 @@ describe('<Characters />', () => {
   });
 
   it('should display Characters', async () => {
-    const wrapper = mount(
-      <Router>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Characters />
-        </MockedProvider>
-      </Router>,
-    );
+    let wrapper;
+    act(() => {
+      wrapper = mount(
+        <Router>
+          <MockedProvider mocks={mocks} addTypename={false}>
+            <Characters />
+          </MockedProvider>
+        </Router>,
+      );
+    });
 
-    await wait(0);
-    wrapper.update();
+    await act(async () => {
+      await wait(0);
+      wrapper.update();
+    });
 
     expect(wrapper.find(CharactersPage).find(LeftImageCard)).toHaveLength(3);
   });
 
   it('should redirect when error occurs', async () => {
-    const wrapper = mount(
-      <Router>
-        <MockedProvider mocks={errorMocks} addTypename={false}>
-          <Characters />
-        </MockedProvider>
-      </Router>,
-    );
+    let wrapper;
+    act(() => {
+      wrapper = mount(
+        <Router>
+          <MockedProvider mocks={errorMocks} addTypename={false}>
+            <Characters />
+          </MockedProvider>
+        </Router>,
+      );
+    });
 
-    await wait(0);
-    wrapper.update();
+    await act(async () => {
+      await wait(0);
+      wrapper.update();
+    });
 
-    expect(wrapper.find(Redirect)).toHaveLength(1);
-  });
-
-  it('should redirect when error occurs', async () => {
-    const wrapper = mount(
-      <Router>
-        <MockedProvider mocks={errorMocks} addTypename={false}>
-          <Characters />
-        </MockedProvider>
-      </Router>,
-    );
-
-    await wait(0);
-    wrapper.update();
-
-    expect(wrapper.find(Redirect)).toHaveLength(1);
+    expect(wrapper.find(Redirect)).toHaveProp('to', 'logout');
   });
 
   it('should fetchMore', async () => {
-    const wrapper = mount(
-      <Router>
-        <MockedProvider mocks={mocks} addTypename={false}>
-          <Characters />
-        </MockedProvider>
-      </Router>,
-    );
+    let wrapper;
 
-    await wait(10);
-    wrapper.update();
-
-    wrapper.find(Button).simulate('click');
-
-    await wait(10);
-    wrapper.update();
+    await act(async () => {
+      wrapper = mount(
+        <Router>
+          <MockedProvider mocks={mocks} addTypename={false}>
+            <Characters />
+          </MockedProvider>
+        </Router>,
+      );
+      await wait(10);
+      wrapper.update();
+      wrapper.find(Button).simulate('click');
+      await wait(10);
+      wrapper.update();
+    });
 
     expect(wrapper.find(CharactersPage).find(LeftImageCard)).toHaveLength(6);
 
-    wrapper.find(Button).simulate('click');
-
-    await wait(10);
-    wrapper.update();
+    await act(async () => {
+      wrapper.find(Button).simulate('click');
+      await wait(10);
+      wrapper.update();
+    });
 
     expect(wrapper.find(CharactersPage).find(LeftImageCard)).toHaveLength(6);
   });
